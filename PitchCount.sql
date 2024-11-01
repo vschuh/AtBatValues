@@ -11,7 +11,7 @@ SELECT rn "Pitch#", (sum(sum(h)) over (order by rn asc)::double precision/sum(su
 		FROM gameevents 
 		join game on gameid = game.id
 		join tournamentevent te on te.id = tournamentid
-		where nopitch = 0 and home = 0
+		where nopitch = 0
 		and tier = 1 and te.federation_id in (SELECT id from federation where tier = 1) and sport <5
 		order by rn asc) as sub1 
 	group by rn
